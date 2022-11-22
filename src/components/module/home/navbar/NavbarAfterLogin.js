@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import "../StyleHome.css";
-import logo from "../../../../assets/image/Logo.svg";
+import logo from "../../../../assets/image/logo.png";
 import filter from "../../../../assets/image/filter.png";
 import Profil from "../../../../assets/image/profil.png";
 import bell from "../../../../assets/image/bell (1) 1.png";
 import mail from "../../../../assets/image/mail (3) 1.png";
 import cart from "../../../../assets/image/search.svg";
 import { Link } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import ModalFilter from "../../../base/modal/ModalFilter";
 import { useNavigate } from "react-router-dom";
-
 
 const NavbarAfterLogin = () => {
   const navigate = useNavigate();
 
   const [search, setSearch] = useState([]);
   const handleSearch = () => {
-      navigate({
+    navigate({
       pathname: "/myProducts",
-      search: "?search=" + search ,
+      search: "?search=" + search,
     });
   };
   useEffect(() => {
     datas();
   }, []);
-
- 
 
   const datas = async () => {
     const token = localStorage.getItem("token");
@@ -40,16 +37,15 @@ const NavbarAfterLogin = () => {
       }
     );
     console.log(response.data.data.username);
-    
   };
-    //  const [search, setSearch] = useState("");
-    //  let [searchParams, setSearchParams] = useSearchParams({});
-    //  const handleSearch = () => {
-    //    setSearchParams({ keyword: search });
-    // //  };
-    //  useEffect(() => {
-    //    console.log(searchParams.get("keyword"));
-    //  }, [searchParams]);
+  //  const [search, setSearch] = useState("");
+  //  let [searchParams, setSearchParams] = useSearchParams({});
+  //  const handleSearch = () => {
+  //    setSearchParams({ keyword: search });
+  // //  };
+  //  useEffect(() => {
+  //    console.log(searchParams.get("keyword"));
+  //  }, [searchParams]);
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
@@ -93,11 +89,11 @@ const NavbarAfterLogin = () => {
               <p>{searchParams.get("search")}</p>
               <button className="btn btn-outline-light filter">
                 {/* <img src={filter} alt="filter" /> */}
-              {/* </button>
+            {/* </button>
             </ul>  */}
             <ul className="navbar-nav mb-2 mb-md-0  me-auto">
               <li>
-                  <div className="input-group rounded nav-search">
+                <div className="input-group rounded nav-search">
                   <input
                     type="text"
                     className="form-control search-input"
@@ -113,20 +109,17 @@ const NavbarAfterLogin = () => {
                   >
                     <i className="bi bi-search" onClick={handleSearch}></i>
                   </span>
-              </div>
+                </div>
               </li>
               <li>
-              <button className="btn filter1">
-                <ModalFilter />
-            </button>
-
+                <button className="btn filter1">
+                  <ModalFilter />
+                </button>
               </li>
-            
-            
-          </ul>
+            </ul>
             <form className="ms-4  end">
               <Link to="/checkout">
-              <img src={cart} alt="" className="icon-cart mb-2" />
+                <img src={cart} alt="" className="icon-cart mb-2" />
               </Link>
               <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
               <img src={mail} alt="" className="icon-cart ms-3 mb-2" />
@@ -134,7 +127,6 @@ const NavbarAfterLogin = () => {
                 <img src={Profil} alt="" className="rounded-circle" />
               </Link>
             </form>
-           
           </div>
         </div>
       </nav>

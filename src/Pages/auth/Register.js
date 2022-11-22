@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
-import vektor from "../../assets/image/Logo.svg";
+import vektor from "../../assets/image/logo.png";
 import blanja from "../../assets/image/Blanja.png";
 // import Style from '../auth/style.module.css'
 // import PropTypes from "prop-types";
@@ -16,26 +16,26 @@ const Register = ({ label, ...props }) => {
     fullname: "",
     email: "",
     password: "",
-    role: "buyer"
+    role: "buyer",
   });
 
-       if (auth === user) {
-         alert("updsss");
-       }
-       console.log(user);
-   const handleChange = (e) => {
-     setUser({
-       ...user,
-       [e.target.name]: e.target.value,
-       role: "buyer"
-     });
-   };
+  if (auth === user) {
+    alert("updsss");
+  }
+  console.log(user);
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+      role: "buyer",
+    });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(signUp(user, navigate));
   };
-if (auth.id) return navigate("/login");
+  if (auth.id) return navigate("/login");
 
   return (
     <div>
@@ -104,13 +104,12 @@ if (auth.id) return navigate("/login");
           </button>
           <div className="center-text">
             <label className="login mb-3 mt-4" for="">
-            Don't have a Tokopedia account?
-            <Link to="/login" className="page-login">
-              Login
-            </Link>
-            </label>  
+              Don't have a Tokopedia account?
+              <Link to="/login" className="page-login">
+                Login
+              </Link>
+            </label>
           </div>
-          
         </form>
       </div>
     </div>

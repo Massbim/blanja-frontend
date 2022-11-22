@@ -1,31 +1,31 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './style.css'
-import vektor from '../../assets/image/Logo.svg'
+import "./style.css";
+import vektor from "../../assets/image/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../configs/redux/actions/userAction";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-     const navigate = useNavigate();
-     const dispatch = useDispatch();
-     const { isLoading } = useSelector((state) => state.auth);
-     const [formLogin, setFormLogin] = useState({
-       email: "",
-       password: "",
-     });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.auth);
+  const [formLogin, setFormLogin] = useState({
+    email: "",
+    password: "",
+  });
 
-     const handleChange = (e) => {
-       setFormLogin({
-         ...formLogin,
-         [e.target.name]: e.target.value,
-       });
+  const handleChange = (e) => {
+    setFormLogin({
+      ...formLogin,
+      [e.target.name]: e.target.value,
+    });
   };
-  console.log(formLogin.email)
-     const handleLogin = (e) => {
-       e.preventDefault();
-       dispatch(loginUser(formLogin, navigate));
-     };
+  console.log(formLogin.email);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(formLogin, navigate));
+  };
   return (
     <div>
       <div className="form-signin">
@@ -60,22 +60,19 @@ const Login = () => {
             <label>Forgot password?</label>
           </div>
           {/* <button>{isLoading ? "loading.." : "Login"}</button> */}
-          <button className="w-100 btn btn-sign btn-success">
-            Login
-          </button>
-          <div className='center-text'>
+          <button className="w-100 btn btn-sign btn-success">Login</button>
+          <div className="center-text">
             <label className="register mb-3 mt-4" htmlFor="register">
-            Don't have a Tokopedia account?
-            <Link className="page-register" to="/register">
-              Register
-            </Link>
+              Don't have a Tokopedia account?
+              <Link className="page-register" to="/register">
+                Register
+              </Link>
             </label>
           </div>
-          
         </form>
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

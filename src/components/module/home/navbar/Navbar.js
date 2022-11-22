@@ -1,44 +1,43 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../StyleHome.css";
-import NavbarBase from "../../../base/NavbarBase/Index"
-import logo from "../../../../assets/image/Logo.svg";
-import filter from "../../../../assets/image/filter.png"
-import cart from "../../../../assets/image/search.svg"
+import NavbarBase from "../../../base/NavbarBase/Index";
+import logo from "../../../../assets/image/logo.png";
+import filter from "../../../../assets/image/filter.png";
+import cart from "../../../../assets/image/search.svg";
 import Profil from "../../../../assets/image/profil.png";
 import bell from "../../../../assets/image/bell (1) 1.png";
 import mail from "../../../../assets/image/mail (3) 1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
-import axios from "axios"
+import axios from "axios";
 import { signOut } from "../../../../configs/redux/actions/userAction";
 
-
 const Navbar = ({ onChange }) => {
-const { user } = useSelector((state) => state.auth);
-const dispatch = useDispatch();
-console.log(user);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  console.log(user);
   const handleSignOut = () => {
-   localStorage.removeItem("id");
-  dispatch(signOut());
-};
+    localStorage.removeItem("id");
+    dispatch(signOut());
+  };
 
-useEffect(() => {
-  datas();
-}, []);
+  useEffect(() => {
+    datas();
+  }, []);
 
-const datas = async () => {
-  const token = localStorage.getItem("token");
-  const response = await axios.get(
-    `${process.env.REACT_APP_API_BACKEND}users/profile`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  console.log(response.data.data.fullname);
-};
+  const datas = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_BACKEND}users/profile`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(response.data.data.fullname);
+  };
   return (
     <div>
       <NavbarBase
@@ -71,7 +70,7 @@ const datas = async () => {
             <Dropdown className="d-inline mx-2">
               <Dropdown.Toggle variant="light" id="dropdown-basic">
                 <img
-                  src={ Profil}
+                  src={Profil}
                   alt=""
                   width={25}
                   height={25}
@@ -110,7 +109,7 @@ const datas = async () => {
                 <img src={filter} alt="" className="bi bi-cart" />
               </button>
             </a>
-            
+
             <Link to="/login">
               <button className="btn button-login " type="button">
                 {" "}
@@ -133,4 +132,4 @@ const datas = async () => {
   );
 };
 
-export default Navbar
+export default Navbar;
